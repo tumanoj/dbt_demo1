@@ -38,8 +38,8 @@ final as (
     customer_orders.first_order_date,
     customer_orders.most_recent_order_date,
     coalesce(customer_orders.number_of_orders,0) as number_of_orders,
-    order_payments.amount_purchased
-    from customers, order_payments
+    --order_payments.amount_purchased
+    from customers --, order_payments
     left join customer_orders using(customer_id)
    
 )
