@@ -6,6 +6,10 @@ orders as (
     select * from {{ref("stg_order")}} 
 ),
 
+payments as (
+    select * from {{ref("stg_payment")}} 
+),
+
 customer_orders as (
     select
     customer_id,
@@ -16,6 +20,14 @@ customer_orders as (
     group by 1
 ),
 
+order_payments as (
+    select
+    order_id, 
+    total_sales as amount_purchased
+    from {{ref("sales_mdoel")}}
+    left join orders using (order_id)
+),
+
 final as (
     select 
     customers.customer_id,
@@ -23,9 +35,12 @@ final as (
     customers.last_name,
     customer_orders.first_order_date,
     customer_orders.most_recent_order_date,
-    coalesce(customer_orders.number_of_orders,0) as number_of_orders
-    from customers
+    coalesce(customer_orders.number_of_orders,0) as number_of_orders,
+    amount_purchased
+    from customers,order_payments
     left join customer_orders using(customer_id)
+    
+    
 )
 
 select * from final
