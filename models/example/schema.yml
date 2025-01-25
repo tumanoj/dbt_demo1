@@ -2,20 +2,31 @@
 version: 2
 
 models:
-    - name: my_first_dbt_model
-      description: "A starter dbt model"
+    - name: stg_customer
+      description: "A customer dbt model"
       columns:
-          - name: id
+          - name: CUSTOMER_ID
             description: "The primary key for this table"
             tests:
                 - unique
                 - not_null
 
-    - name: my_second_dbt_model
-      description: "A starter dbt model"
+    - name: stg_order
+      description: "A Order dbt model"
       columns:
-          - name: id
+          - name: ORDER_ID
             description: "The primary key for this table"
             tests:
                 - unique
                 - not_null
+      
+    - name: stg_payment
+      description: "A Payment dbt model"
+      columns:
+          - name: PAYMENT_ID
+            description: "The primary key for this table"
+            tests:
+                - unique
+                - not_null
+          - name: AMOUNT
+            description: "Sales amount in Payment Table."      
