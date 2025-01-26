@@ -16,7 +16,7 @@ lagged_time AS (
         payments.payment_id,
         payments.order_id,
         payments.amount,
-        LAG(payments.amount) OVER (PARTITION BY payments.order_id ORDER BY payments.transaction_timestamp) AS previous_amount,
+        lag(payments.amount) OVER (PARTITION BY payments.order_id ORDER BY payments.transaction_timestamp) as previous_amount,
         lag(transaction_timestamp) over (PARTITION BY payments.order_id order by payments.transaction_timestamp) as last_transaction_time,
         transaction_timestamp,
         orders.status,
