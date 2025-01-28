@@ -1,14 +1,16 @@
---create a summary model to calculate the overall percent gain per symbol, across all seasons
-WITH symbol_summary AS (
-    SELECT
-        symbol,
-        SUM(shares) AS total_shares,
-        AVG(percent_gain) AS avg_percent_gain,
-        SUM(start_value_usd) AS total_start_value_usd,
-        SUM(end_value_usd) AS total_end_value_usd
-    FROM {{ ref('stg_stock_data') }}
-    GROUP BY symbol
-)
-SELECT * FROM symbol_summary
+-- create a summary model to calculate the overall percent gain per symbol, across all
+-- seasons
 
---This table provides a summary of the performance of each symbol, aggregating the data over all seasons.
+select
+    symbol,
+    sum(shares) as total_shares,
+    avg(percent_gain) as avg_percent_gain,
+    sum(start_value_usd) as total_start_value_usd,
+    sum(end_value_usd) as total_end_value_usd
+from {{ ref("stg_stock_data") }}
+group by
+    symbol
+
+    -- This table provides a summary of the performance of each symbol, aggregating
+    -- the data over all seasons.
+    
