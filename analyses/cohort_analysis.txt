@@ -1,0 +1,10 @@
+A Cohort Analysis model groups customers based on shared characteristics or behaviors over a period of time. 
+Typically, cohorts are defined by the time a customer first engaged with your service, 
+such as their JOIN_DATE. 
+
+You can then track various behaviors of these cohorts over time (e.g., retention, spend behavior, etc.).
+
+Cohort Analysis Goal:
+Group customers into cohorts based on their JOIN_DATE (e.g., the month or quarter they first joined).
+Track customer behavior over time, such as their LAST_ACTIVITY_DATE, TOTAL_SPEND, or other metrics.
+Calculate cohort retention—how many customers from each cohort are still active in subsequent months.
