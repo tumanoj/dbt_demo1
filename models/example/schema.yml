@@ -30,3 +30,41 @@ models:
                 - not_null
           - name: AMOUNT
             description: "Sales amount in Payment Table."      
+
+    - name: stg_customers
+      description: "Staging table for raw customer data"
+      columns:
+        - name: CUSTOMER_ID
+          description: "Customer ID"
+          tests:
+          - unique
+          - not_null
+        - name: EMAIL
+          description: "Customer email"
+          tests:
+          - unique
+          - not_null
+          
+    - name: customers_segmented
+      description: "Segmented customer data based on total spend"
+      columns:
+        - name: CUSTOMER_SEGMENT
+          description: "Customer segment"
+          tests:
+          - not_null
+
+    - name: customers_activity_status
+      description: "Customer activity status based on last activity date"
+      columns:
+      - name: ACTIVITY_STATUS
+        description: "Customer activity status"
+        tests:
+          - not_null
+
+    - name: customers_final
+      description: "Final model combining segmentation and activity status"
+      columns:
+      - name: CUSTOMER_ID
+        description: "Customer ID"
+        tests:
+         - not_null
