@@ -1,0 +1,1 @@
+Customer final model contains Customer segmented and activity status data.
